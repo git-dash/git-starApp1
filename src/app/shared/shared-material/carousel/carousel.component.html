@@ -1,0 +1,30 @@
+<!-- <p>
+  carousel works! {{ slides |json}}
+
+</p> -->
+<carousel class='test'>
+
+  <slide *ngFor="let slide of slides; let i=index">
+    <img [src]="slide.imgSrc" alt="" class="slide-image image-size">
+    <div class="carousel-caption d-none d-md-block" *ngIf="slideDetails.isRoomSearch==false">
+      <h3> Room Rent : {{slideDetails.roomRent | currency:'INR'}} </h3>
+      <h4> Address : {{slideDetails.address}} </h4>
+
+    </div>
+    <div class="carousel-caption d-none d-md-block" *ngIf="slideDetails.isRoomSearch==true">
+      <h3> Room Rent : {{slideDetails.roomRent | currency:'INR'}} </h3>
+      <h4> Description : {{slideDetails.desc}} </h4>
+
+    </div>
+  </slide>
+
+  <!-- <slide>
+    <img src="assets/images/nature/1.jpg" alt="First slide" style="display: block; width: 100%;">
+  </slide>
+  <slide>
+    <img src="assets/images/nature/2.jpg" alt="Second slide" style="display: block; width: 100%;">
+  </slide>
+  <slide>
+    <img src="assets/images/nature/3.jpg" alt="Third slide" style="display: block; width: 100%;">
+  </slide> -->
+</carousel>

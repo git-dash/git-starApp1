@@ -1,0 +1,27 @@
+.slide-image {
+    /* background: -moz-element(); */
+    display: block;
+    width: 100%;
+    /* font-b: black; */
+    background-size: cover;
+    /* opacity: .6; */
+    /* width: 100%; */
+    /* padding: 5px; */
+    height: 400px;
+}
+
+.image-size {
+    height: 400px;
+}
+
+.test {
+    margin: 0px;
+    padding: 0px;
+    height: 200px;
+}
+
+@media (max-width : 600px) {
+    .image-size {
+        height: 200px;
+    }
+}

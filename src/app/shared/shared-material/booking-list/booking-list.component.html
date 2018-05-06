@@ -1,0 +1,53 @@
+<p>
+  booking-list works!
+</p>
+
+<mat-table #table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef> Status</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> #</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="bookingDate">
+    <mat-header-cell *matHeaderCellDef> Booked On </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.bookingDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+    <mat-header-cell *matHeaderCellDef> Bill Amount</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="bookedBy">
+    <mat-header-cell *matHeaderCellDef> Booked By</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.bookedBy}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="operation">
+    <mat-header-cell *matHeaderCellDef> Operation</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{element.roomKey}}
+      <button mat-raised-button (click)='openModal()'>
+        Approved
+      </button>
+    </mat-cell>
+  </ng-container>
+
+
+
+
+  <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+
+</mat-table>
+
+
+<app-booking-modal>
+
+</app-booking-modal>

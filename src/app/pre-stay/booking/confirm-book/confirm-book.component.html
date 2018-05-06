@@ -1,0 +1,101 @@
+<div class="container-fluid">
+
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="card-logo"></div>
+
+        <mat-card-title>
+          <div> {{finalHotel.name}}
+            <app-star [star]='finalHotel.starClass'> </app-star>
+          </div>
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{finalHotel.location}} - {{finalHotel.phone}}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+
+      <app-carousel [slideDetails]='{"address":finalHotel.address, log_lat:finalHotel.log_lat, roomRent : finalRoom.basicFare,isRoomSearch:false}'></app-carousel>
+      <mat-card-content>
+        <div>
+          <span>
+
+            <ul class="service-list">
+              <li>
+                <h4> Provided Services: </h4>
+              </li>
+              <li *ngFor="let serv of finalHotel.services">
+                <span matTooltip='{{commonService[serv].label}}'>
+                  <img [src]=' "assets/icons/" + commonService[serv].symbol ' alt="" class="service-image">
+                </span>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="col-lg-6 col-sm-6 col-md-6  col-xs-12">
+    <mat-card>
+      <mat-card-content>
+        <div class="row">
+
+          <form [formGroup]="cabForm" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h4> Guest Details </h4>
+              <hr class="hr-class" color='warn'>
+            </div>
+
+            <div formArrayName='guestList'>
+            
+              <div *ngFor="let item of cabForm.controls.guestList['controls']; let i=index" [formGroupName]='i' class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <mat-form-field class="col-lg-1 col-sm-3 col-md-2 col-xs-2">
+                  <input matInput disabled [value]="i+1">
+                </mat-form-field>
+                <mat-form-field class="col-lg-6 col-sm-9 col-md-10 col-xs-10">
+                  <input matInput formControlName="name" [placeholder]="'Guest '+(i+1)">
+                </mat-form-field>
+
+                <mat-form-field class="col-lg-2 col-sm-3 col-md-2 col-xs-3">
+                  <input matInput formControlName="age" placeholder="Age">
+                </mat-form-field>
+
+                <mat-form-field class="col-lg-3 col-sm-9 col-md-10 col-xs-9">
+                  <input matInput formControlName="phone" placeholder="phone">
+                </mat-form-field>
+
+                <hr class='table-row'>
+
+              </div>
+            </div>
+
+
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h4 mat-label> Need Pick-up Ride?? </h4>
+              <hr class="hr-class" color='warn'>
+              <mat-radio-group class="example-radio-group" formControlName='needCab'>
+                <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                  {{season.label}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <button mat-raised-button color="accent" [disabled]="!cabForm.valid" style="width:100%" (click)="book(cabForm.value)">
+                Confrim & Book Room @ {{ finalRoom.roomRent +cabForm.value.needCab.cost | currency:'INR' }}
+              </button>
+            </div>
+          </form>
+
+
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

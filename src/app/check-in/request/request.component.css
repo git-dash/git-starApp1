@@ -1,0 +1,10 @@
+.hotel-logo {
+    
+    background-size: cover;
+    background-image: url('./../../../assets/logo/star3.png');
+}
+
+mat-action-row span {
+    margin-right: 50px;
+    margin-top: 10px;
+}

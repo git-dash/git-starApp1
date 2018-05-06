@@ -1,0 +1,95 @@
+.hotel-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  /* width: 30%; */
+  margin: 50px 0px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+
+mat-card {
+  background-color: whitesmoke;
+}
+
+.card-logo {
+  /*  */
+  background-size: cover;
+  background-image: url('./../../../../assets/logo/star3.png');
+}
+
+.hotel-photo {
+  background-size: cover;
+  /* width: 100%; */
+  padding: 5px;
+  /* background-image: url('./../../../../assets/images/hotel/3.jpg'); */
+}
+
+.service-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* padding: 0px 5px; */
+}
+
+.service-image {
+  height: 28px;
+}
+
+.service-list li {
+  display: inline-block;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.example-card {
+  max-width: 400px;
+  /* width: 400px; */
+}
+
+.flex-table {
+  display: flex;
+  grid-column-gap: 10px;
+  text-align: center;
+}
+
+.flex-table mat-form-field {
+  /* border: 1px dashed saddlebrown ; */
+  padding: 5px;
+}
+
+.main-class {
+  /* display: flex; */
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  align-items: flex-start;
+  /* flex-wrap: wrap; */
+  /* max-width: 100%x */
+}
+
+.hr-class {
+  border-top-color: #ff4282;
+  width: 52%;
+  /* !important; */
+  margin-left: 0px;
+  /* padding: 0px; */
+}
+
+.table-row {
+  border-top-color: blueviolet;
+  width: 100%;
+  margin-left: 0px;
+  opacity: .4;
+}

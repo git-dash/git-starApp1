@@ -1,0 +1,73 @@
+
+
+<div class="container-fluid">
+
+  <span *ngIf='bookingHistory.length==0'>
+    
+    No Booking has been done yet.
+  </span>
+  <div *ngIf='bookingHistory.length!=0'>
+
+    <h4> Previous Booking Details </h4>
+
+
+
+
+
+    <mat-expansion-panel *ngFor="let hist of bookingHistory">
+      <mat-expansion-panel-header>
+
+        <h3> {{hist.hotelDetails.name}} </h3>
+        <app-star [star]='hist.hotelDetails.starClass' style="margin-top:20px;margin-left:20px"></app-star>
+
+
+        <!-- {{hist.hotelDetails.starClass}} -->
+
+
+      </mat-expansion-panel-header>
+
+      <div class="col-lg-12">
+        
+
+        <div class="col-lg-4" [style.border-right]="'1px dashed #ddd'">
+          <h5>Hotel Details</h5>
+
+          <p> name : {{hist.hotelDetails.name}} </p>
+        
+          <p> location : {{hist.hotelDetails.location}} </p>
+          <p> address : {{hist.hotelDetails.address}} </p>
+          <p> Contact Details : {{hist.hotelDetails.phone}} </p>
+        
+        </div>
+        <div class="col-lg-4" [style.border-right]="'1px dashed #ddd'">
+          <h5>Room Details</h5>
+          <p> roomType : {{hist.roomDetails.roomType}} </p>
+          <p> basicFare : {{hist.roomDetails.basicFare |currency:'INR'}} </p>
+          <p> checkIn : {{hist.checkingDetails.checkIn}} </p>
+          <p> checkOut : {{hist.checkingDetails.checkOut}} </p>
+        </div>
+        <div class="col-lg-4">
+          <h5>Guest Details</h5>
+          <!-- list of guest -->
+          <app-guest-list [dataSrc]='hist.roomDetails.guestList'>
+
+          </app-guest-list>
+
+        </div>
+      </div>
+
+
+      <mat-action-row>
+
+        <button mat-raised-button color='warn' [disabled]='true'> {{hist.total | currency:'INR'}} is paid
+
+        </button>
+
+      </mat-action-row>
+    </mat-expansion-panel>
+
+
+
+
+  </div>
+</div>

@@ -1,0 +1,153 @@
+<div class="">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxShow.xs='false'>
+
+      <!-- <span class="mat-button-wrapper">
+        <img src="../assets/logo/star4.png" alt="" style="height: 26px;width:26px; margin: 0 4px 3px 0;"> -->
+      <button [routerLink]="['']" mat-button>
+        <img src="assets/logo/star2.png" style="height:36px;width:36px;"> Star Residentz!
+      </button>
+      <!-- </span> -->
+
+
+
+      <button [routerLink]="[item.link]" mat-button *ngFor='let item of navbar'>
+        {{item.label}}
+      </button>
+
+
+      <span class="example-spacer"></span>
+
+      <!-- <div> -->
+      <!-- <span> -->
+      <button mat-button *ngIf='currentUser!=null' [routerLink]="['identity/profile']">
+        <img [src]="currentUser.photoURL" alt="" srcset="" style="height:36px;width:36px;">
+        <!-- <span class="glyphicon glyphicon-user"> </span> -->
+        {{this.currentUser.displayName}}
+      </button>
+
+      <button mat-button (click)='logout()' *ngIf='currentUser!=null' [routerLink]="['']">
+        <span class="glyphicon glyphicon-log-out"> </span> Logout
+      </button>
+      <!-- </span> -->
+
+      <!-- <a class="glyphicon glyphicon-user" [routerLink]="['identity/profile']"> {{'' + this.currentUser.fullName }} </a>
+        <a class="glyphicon glyphicon-log-out" (click)='logout()'> Logout </a> -->
+
+      <!-- <span *ngIf='currentUser==null'> -->
+      <button mat-button *ngIf='currentUser==null' class="glyphicon glyphicon-user" [routerLink]="['identity/register']"> Sign Up </button>
+      <button mat-button *ngIf='currentUser==null' class="glyphicon glyphicon-log-in" [routerLink]="['/identity/login']"> Login </button>
+      <!-- </span> -->
+      <!-- </div> -->
+    </mat-toolbar-row>
+    <mat-toolbar-row fxHide fxShow.xs='true'>
+
+      <button [routerLink]="['']" mat-button>
+        <img src="assets/logo/star2.png" style="height:36px;width:36px;"> Star Residentz!
+      </button>
+
+      <span class="example-spacer"></span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+
+      <mat-menu #menu="matMenu">
+
+
+
+        <button mat-menu-item [matMenuTriggerFor]="hotel">Hotel</button>
+
+        <button mat-menu-item *ngIf='currentUser!=null'>
+          <!-- <span class="glyphicon glyphicon-user"> </span> -->
+          <img src="/assets/logo/man.png" alt="" srcset="" style="height:36px;width:36px;"> {{this.currentUser.displayName}}
+        </button>
+
+        <button mat-menu-item (click)='logout()' *ngIf='currentUser!=null'>
+          <span class="glyphicon glyphicon-log-out"> </span> Logout
+        </button>
+        <button mat-menu-item *ngIf='currentUser==null' [routerLink]="['identity/register']">Sign Up </button>
+        <button mat-menu-item *ngIf='currentUser==null' [routerLink]="['/identity/login']"> Sign In</button>
+
+      </mat-menu>
+
+      <mat-menu #hotel="matMenu">
+        <button mat-menu-item [routerLink]="[item.link]" *ngFor='let item of navbar'>
+          {{item.label}}
+        </button>
+      </mat-menu>
+
+      <!-- <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+
+        <button mat-menu-item [routerLink]="[item.link]" *ngFor='let item of navbar'>
+          {{item.label}}
+        </button>
+        <hr>
+
+        <button mat-menu-item *ngIf='currentUser!=null'>
+          <span class="glyphicon glyphicon-user"> </span> {{this.currentUser.displayName}}
+        </button>
+
+        <button mat-menu-item (click)='logout()' *ngIf='currentUser!=null'>
+          <span class="glyphicon glyphicon-log-out"> </span> Logout
+        </button>
+
+
+        <button mat-menu-item *ngIf='currentUser==null' [routerLink]="['identity/register']">Sign Up </button>
+        <button mat-menu-item *ngIf='currentUser==null' [routerLink]="['/identity/login']"> Sign In</button>
+      </mat-menu> -->
+    </mat-toolbar-row>
+
+
+
+
+
+  </mat-toolbar>
+
+
+
+</div>
+
+<!-- <div style="padding-top:0px;">
+  <img class="image-responsive" src="https://upload.wikimedia.org/wikipedia/commons/4/40/Hotel_Stockton_-_Stockton%2C_CA.JPG">
+</div> -->
+<!-- <div class="container-fluid my-container"> -->
+
+<div style="min-height:70%">
+  <router-outlet></router-outlet>
+</div>
+
+
+<!-- footer -->
+<footer class="footer">
+  <!-- <div class="container-fluid text-center" style="background-color:white">
+    <div class="col-lg-12">
+      <hr style="width:90%;height:1%;text-align:center;color:black  ">
+      <div class="col-lg-4">
+
+        <img src="assets/logo/mind.jpg" alt="" srcset="" style="width: 250px;height: 150px;float:left">
+      </div>
+      <div class="col-lg-8">
+        &copy;&nbsp;Mindtree 2018
+      </div>
+    </div>
+  </div> -->
+  <div class="container-fluid" style="background-color:white; width:98%;border-top:1px solid #cf8196">
+    <!-- <hr style=" width:98%;border-top:1px solid #cf8196 "> -->
+
+    <div class="row text-center " fxLayout="row " fxLayoutAlign="space-between center ">
+      <div fxFlex="20% " fxFlexOrder="1 ">
+        <img src="assets/logo/mind.jpg " alt=" " srcset=" " style="width: 250px;height: 150px; ">
+      </div>
+      <div fxFlex="80% " fxFlexOrder="2 ">
+        &copy;&nbsp;Mindtree 2018
+      </div>
+    </div>
+
+  </div>
+</footer>

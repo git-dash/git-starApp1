@@ -1,0 +1,26 @@
+.card-logo {
+    
+    background-size: cover;
+    background-image: url('./../../../assets/logo/star3.png');
+}
+
+.div-separator {
+    border-left: 1px dashed #ddd;
+    padding-left: 10px;
+}
+
+.div-margin {
+    margin-bottom: 20px;
+}
+
+@media (max-width :480px) {
+    .small-screen-scroll {
+        width: 400px;
+        scroll-behavior: auto;
+    }
+    .div-separator {
+        border-left: none;
+        border-top: 1px dashed #ddd;
+        padding-top: 10px;
+    }
+}

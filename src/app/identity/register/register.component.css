@@ -1,0 +1,52 @@
+.old-form {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 350px;
+	margin: 0 auto;
+	border: 1px solid black;
+	background: #fff;
+	min-height: 250px;
+	padding: 20px;
+	z-index: 9999;
+	background: #f7f7f7;
+}
+
+/*background: rgba(48, 46, 45, 1);*/
+
+
+
+.formClass img {
+	height: 50px;
+	width: 50px;
+}
+
+/* new classes */
+
+.title-text {
+	height: 100px;
+	/* padding-top: 10%; */
+	text-align: center;
+	color: indianred;
+	font-size: 30px;
+	font-family: monospace;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.title-logo {
+	height: 100px;
+	width: 100px;
+}
+
+.form-pad .mat-form-field {
+	margin: 5px;
+	padding: 5px;
+	width: 95%;
+}
+
+.form-action {
+	margin: 5px;
+	padding: 5px;
+}

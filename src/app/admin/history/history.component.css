@@ -1,0 +1,16 @@
+
+.card-container {
+    display: inherit;
+    
+}
+
+.card-logo {
+    
+    background-size: cover;
+    background-image: url('./../../../assets/logo/star3.png');
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 350px;
+}

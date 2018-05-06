@@ -1,0 +1,132 @@
+<div class="container" *ngIf="currentUser" style="margin-top:10px;">
+
+  <div class='col-lg-6 col-lg-offset-3'>
+
+    <mat-card>
+      <mat-card-header class="container-fluid" fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex fxFlexOrder="2">
+          <mat-card-title>{{currentUser.displayName}}</mat-card-title>
+          <mat-card-subtitle>
+            {{currentUser.email}}
+            <br> {{'(+91 )' +currentUser.phoneNumber}}
+          </mat-card-subtitle>
+        </div>
+
+        <div fxFlex="30%" fxFlexOrder="1">
+          <img [src]="
+          currentUser.providerId!=='password' ?
+          currentUser.photoURL :
+          profileForm.value.photoURL
+          " alt="not avail" srcset="" class="profile-image2">
+          <button mat-button class="file-button" color='primary' style="margin:5px;" *ngIf="currentUser.providerId=='password'">
+            Update Photo
+            <input type="file" (change)="onChange($event)" />
+          </button>
+          <!-- <div class="text-center file-button ">
+
+            Update Photo
+            <input type="file" (change)="onChange($event)" color='warn' />
+
+          </div> -->
+
+        </div>
+
+        <!-- <div mat-card-avatar class="profile-image"> </div> -->
+
+      </mat-card-header>
+      <mat-card-content>
+
+        <div class="row">
+
+          <div style="text-align:left;padding:15px">
+            <!-- {{profileForm.value | json}} {{profileForm.pristine| json}}
+             {{profileForm.dirty | json}} -->
+            <form [formGroup]='profileForm' class="col-lg-12">
+
+
+              <!-- <div class="text-center">
+                <img [src]="profileForm.value.photoURL" alt="not avail" srcset="" class="profile-image2">
+                <input type="file" (change)="onChange($event)" />
+
+                <button mat-button> change</button>
+                <button type="file" (change)="onChange($event)"> </button>
+              </div> -->
+
+              <div [hidden]="true">
+
+                <mat-form-field class="col-lg-12">
+                  <input matInput formControlName='photoURL'>
+                </mat-form-field>
+              </div>
+
+              <mat-form-field class="col-lg-12">
+                <span matPrefix>(+91)&nbsp;</span>
+
+                <input matInput formControlName='phoneNumber' placeholder="Contact Number">
+              </mat-form-field>
+
+              <div class="col-lg-12">
+                <label>Gender: </label>
+                <br>
+                <mat-radio-group formControlName="gender">
+                  <mat-radio-button value="male">male</mat-radio-button>
+                  <mat-radio-button value="female">female</mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+              <mat-form-field class="col-lg-12">
+                <!-- <label>Rooms: </label> -->
+                <mat-select placeholder="Hotel Service Preference" multiple formControlName='servicePreference'>
+                  <mat-option *ngFor="let room of serviceTypes" [value]="room.label">
+
+                    {{room.label}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="col-lg-12">
+                <!-- <label>Rooms: </label> -->
+                <mat-select placeholder="Room  Preference" multiple formControlName='roomPreference'>
+                  <mat-option *ngFor="let room of roomTypes" [value]="room.label">{{room.label}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="col-lg-12">
+                <!-- <label>Rooms: </label> -->
+                <mat-select placeholder="Food Preference" multiple formControlName='foodPreference'>
+                  <mat-option *ngFor="let room of foodTypes" [value]="room.label">{{room.label}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+              <div class="col-lg-12">
+                <label>Payment Mode: </label>
+                <br>
+                <mat-radio-group formControlName="paymentMode">
+                  <mat-radio-button value="cash">cash</mat-radio-button>
+                  <mat-radio-button value="card">card</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div>
+
+                <button [disabled]="!profileForm.valid || profileForm.pristine" (click)="updateProfile(profileForm.value)" mat-raised-button
+                  color='warn'> Update Profile </button>
+              </div>
+              <!-- <div formArrayName='roomService'>
+                    
+                    <div *ngFor="let item of profileForm.controls.roomService.controls; let i=index" [formGroupName]='i'>
+                      <mat-checkbox formControlName='service' [value]='roomTypes[i].label' class="col-lg-6">
+                        {{roomTypes[i].label | json}}
+                      </mat-checkbox>
+                    </div>
+                  </div> -->
+            </form>
+          </div>
+        </div>
+
+
+
+
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

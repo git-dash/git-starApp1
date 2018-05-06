@@ -1,0 +1,36 @@
+h1 {
+    color: whitesmoke;
+}
+
+.profile-image {
+    /*  */
+    background-image: url('./../../../assets/logo/star3.png');
+    background-size: cover;
+    height: 100px;
+    width: 100px
+}
+
+.profile-image2 {
+    height: 128px;
+    width: 128px;
+}
+
+.file-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.file-button input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+}

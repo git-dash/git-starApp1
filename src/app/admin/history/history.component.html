@@ -1,0 +1,77 @@
+<div style="padding-top:50px">
+  
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <h3>
+      <mat-label> Booking History : </mat-label>
+    </h3>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="!historySearched">
+    <mat-progress-spinner [color]="'accent'" [mode]="'indeterminate'">
+    </mat-progress-spinner>
+  </div>
+
+  <div *ngIf="bookingHistory.length==0 && historySearched" style="border:1px solid red; padding:10px" class="mat-elevation-z8 text-center">
+    <h5>
+      <mat-label> No Booking has been done yet </mat-label>
+    </h5>
+  </div>
+
+  <div [hidden]="!(bookingHistory.length!=0 && historySearched)" class="mat-elevation-z8">
+    <mat-table #table [dataSource]="histTable">
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> #</mat-header-cell>
+        <mat-cell *matCellDef="let index=index;"> {{index+1}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="bookingDate">
+        <mat-header-cell *matHeaderCellDef> Booked On </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bookingDate}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="checkIn">
+        <mat-header-cell *matHeaderCellDef>check In </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.checkingDetails.checkIn}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="checkOut">
+        <mat-header-cell *matHeaderCellDef> Check Out </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.checkingDetails.checkOut}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef> Bill Amount</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="bookedBy">
+        <mat-header-cell *matHeaderCellDef> Booked By</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="operation">
+        <mat-header-cell *matHeaderCellDef> Operation</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+
+          <div class="button-row">
+            <button mat-icon-button matTooltip='View Details' (click)='openBookDetails(element.roomKey)' color='warn'>
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+
+        </mat-cell>
+      </ng-container>
+
+
+
+
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+
+    </mat-table>
+  </div>
+</div>

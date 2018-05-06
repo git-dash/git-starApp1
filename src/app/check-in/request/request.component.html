@@ -1,0 +1,92 @@
+
+<div class="container-fluid">
+  <h4>In Stay Details</h4>
+  <span *ngIf="bookingDetails.length==0"> No booking has been done yet </span>
+  <mat-card class="example-card" *ngFor="let book of bookingDetails;let index=index;" style="margin-bottom:10px;">
+    <mat-card-header>
+      <div mat-card-avatar class="hotel-logo"></div>
+      <mat-card-title>
+        {{book.hotelDetails.name}} - {{book.roomDetails.roomType}}
+        <app-star [star]='book.hotelDetails.starClass'></app-star>
+      </mat-card-title>
+      <mat-card-subtitle>Status :{{book.status}}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+
+      <div class="col-lg-12">
+        <div class="col-lg-4" [style.border-right]="'1px dashed #ddd'">
+          <h5>Hotel Details</h5>
+
+    
+          <p> location : {{book.hotelDetails.location}} </p>
+          <p> address : {{book.hotelDetails.address}} </p>
+          <p> Contact Details : {{book.hotelDetails.phone}} </p>
+    
+        </div>
+        <div class="col-lg-2" [style.border-right]="'1px dashed #ddd'">
+          <h5>Room Details</h5>
+          <p> roomType : {{book.roomDetails.roomType}} </p>
+          <p> basicFare : {{book.roomDetails.basicFare}} </p>
+          <p> checkIn : {{book.checkingDetails.checkIn}} </p>
+          <p> checkOut : {{book.checkingDetails.checkOut}} </p>
+        </div>
+        <div class="col-lg-6" [style.border-left]="'1px dashed #ddd'">
+          <h5>Guest Details</h5>
+  
+
+          <app-guest-list [dataSrc]='book.roomDetails.guestList'>
+
+          </app-guest-list>
+
+
+        </div>
+      </div>
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button *ngIf='!book.checkingDetails.isCheckIn' color='warn' (click)='checkingStatus(book.roomKey,true)'>
+        Check In
+   
+      </button>
+      <button mat-raised-button [disabled]='book.checkingDetails.isCheckOut || !book.checkingDetails.isCheckIn' color='warn' (click)='checkingStatus(book.roomKey,false)'>
+        {{ book.checkingDetails.isCheckOut ? 'Check Out Request is Under Process': 'Request for Check Cut' }}
+      </button>
+    </mat-card-actions>
+    <mat-card-footer *ngIf="book.checkingDetails.isCheckOut">
+
+   
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Billing Details
+          </mat-panel-title>
+   
+        </mat-expansion-panel-header>
+
+   
+        <div style="max-height: 300px; overflow-y: auto">
+   
+
+          <app-billing-list [dataSrc]='book.usedServices'>
+          </app-billing-list>
+        </div>
+        <mat-action-row>
+   
+          <span mat-label>
+   
+            {{book.checkingDetails.approval ? 'Approved By Hotel' : 'Approval Pending'}}
+          </span>
+   
+
+          <button mat-raised-button color='warn' (click)='successfulCheckout(index)' [disabled]='!book.checkingDetails.approval'>
+            Pay {{book.total | currency:'INR'}} & Check Out
+            <!-- {{index}} -->
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+    </mat-card-footer>
+  </mat-card>
+</div>

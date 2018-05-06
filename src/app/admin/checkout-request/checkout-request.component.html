@@ -1,0 +1,96 @@
+<div class="container-fluid" style="padding-top:50px">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <h3>
+      <mat-label> Check Out Pending Request List : </mat-label>
+    </h3>
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="!bookingDetailsSearched">
+    <mat-progress-spinner [color]="'accent'" [mode]="'indeterminate'">
+    </mat-progress-spinner>
+
+  </div>
+
+  <div *ngIf="bookingDetails.length==0 && bookingDetailsSearched" class="text-center mat-elevation-z8" style="border:1px solid red; padding:10px;">
+    <h5>
+      <mat-label> No Pending Request </mat-label>
+    </h5>
+  </div>
+  <div [hidden]="bookingDetails.length==0 && !bookingDetailsSearched" class="mat-elevation-z8">
+
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Status</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> #</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="bookingDate">
+        <mat-header-cell *matHeaderCellDef> Booked On </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bookingDate | date:'fullDate' }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="checkIn">
+        <mat-header-cell *matHeaderCellDef>check In </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.checkingDetails.checkIn |date:'fullDate'}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="checkOut">
+        <mat-header-cell *matHeaderCellDef> Check Out </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.checkingDetails.checkOut |date:'fullDate'}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef> Bill Amount</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.total | currency:'INR' }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="bookedBy">
+        <mat-header-cell *matHeaderCellDef> Booked By</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bookedBy}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="operation">
+        <mat-header-cell *matHeaderCellDef> Operation</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+
+
+  
+          <div class="button-row">
+            <button mat-icon-button matTooltip='View Details' (click)='openBookDetails(element.roomKey)' color='warn'>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button [matTooltip]='element.checkingDetails.approval ? "Checkout Approved " : "Approve for Checkout " '
+              color='primary' [disabled]='!element.checkingDetails.isCheckOut|| element.checkingDetails.approval' (click)='approveCheckoutRequest(element.roomKey)'>
+              <mat-icon>verified_user</mat-icon>
+            </button>
+
+
+          </div>
+
+        </mat-cell>
+      </ng-container>
+
+
+
+
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+
+
+    </mat-table>
+    <mat-paginator #currentPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
+
+
+
+
+  <app-history></app-history>
+</div>
+

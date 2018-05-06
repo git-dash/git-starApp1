@@ -1,0 +1,43 @@
+/* .card-cont {
+     display: inline-flex; 
+} */
+
+.card-container {
+    display: inherit;
+    /* margin-left:   10px; */
+    /* margin-right:   10px; */
+    /* width: 800px; */
+    /* width: auto; */
+}
+
+.card-logo {
+    
+    background-size: cover;
+    background-image: url('./../../../assets/logo/star3.png');
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 300px;
+}
+
+.mat-row, .mat-header-row {
+    background: white;
+    min-width: 1200px;
+}
+
+.mat-column-id {
+    max-width: 3%;
+}
+.mat-column-operation {
+    max-width: 6%;
+}
+.mat-column-total {
+    max-width: 10%;
+}
+
+.button-row {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+}
