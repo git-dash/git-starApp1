@@ -82,5 +82,5 @@ export class HistoryComponent implements OnInit {
 
     });
   }
-  
+
 }

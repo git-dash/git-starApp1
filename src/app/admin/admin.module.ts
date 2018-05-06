@@ -10,10 +10,10 @@ import { BookModalComponent } from './book-modal/book-modal.component';
 
 
 const routes: Routes = [
-  {
-    path: '', pathMatch: 'full',
-    redirectTo: 'chk-req'
-  },
+  // {
+  //   path: '', pathMatch: 'full',
+  //   redirectTo: 'chk-req'
+  // },
   {
     path: 'history',
     // loadChildren: './booking/booking.module#BookingModule'

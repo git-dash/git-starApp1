@@ -21,18 +21,16 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 const routes: Routes = [
-  {
-    path: '', pathMatch: 'full',
-    redirectTo: 'search'
-  },
+  // {
+  //   path: '', pathMatch: 'full',
+  //   redirectTo: 'search'
+  // },
   {
     path: 'search',
-    // loadChildren: './booking/booking.module/Booking#Module'
     component: SearchComponent
   },
   {
     path: 'confirm-book',
-    // loadChildren: './booking/booking.module/Booking#Module'
     component: ConfirmBookComponent, canActivate: [AuthGuard, BookGuard]
   }
 ];
