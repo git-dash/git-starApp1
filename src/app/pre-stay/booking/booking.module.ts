@@ -21,10 +21,10 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 const routes: Routes = [
-  // {
-  //   path: '', pathMatch: 'full',
-  //   redirectTo: 'search'
-  // },
+  {
+    path: '', pathMatch: 'full',
+    redirectTo: 'search'
+  },
   {
     path: 'search',
     component: SearchComponent

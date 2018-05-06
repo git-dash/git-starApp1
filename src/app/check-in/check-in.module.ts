@@ -9,10 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgQRCodeReaderModule } from 'ng2-qrcode-reader';
 import { ScanQrcodeComponent } from './request/scan-qrcode/scan-qrcode.component';
 const routes: Routes = [
-  // {
-  //   path: '', pathMatch: 'full',
-  //   redirectTo: 'request'
-  // },
+  {
+    path: '', pathMatch: 'full',
+    redirectTo: 'request'
+  },
   {
     path: 'history',
     component: HistoryComponent
